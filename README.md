@@ -4,7 +4,7 @@
 
 Matriculation Number: <to be filled by student>
 
-Project idea short description: 
+Project idea short description: I'd like to create a web application for receipts. The receipt consists of a title, a picture, a list with the ingredients, a step-by-step guidance, the time that is needed and a difficulty level. The receipts will be assigned to different categories, for example dessert, dinner and drinks. New receipts can be added in the web application.
 
 
 ## Project confirmation
