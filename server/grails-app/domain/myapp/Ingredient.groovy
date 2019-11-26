@@ -2,11 +2,13 @@ package myapp
 
 import grails.rest.Resource
 
+@Resource(uri = "/ingredient")
 class Ingredient {
     String name
-    Unit unit
+    String unit
 
-    static hasMany = [recipeIngredients: RecipeIngredient]
+
+    //static hasMany = [recipeIngredients: RecipeIngredient]
 
     static constraints = {
         unit nullable: true

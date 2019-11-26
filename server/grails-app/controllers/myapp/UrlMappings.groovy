@@ -15,8 +15,6 @@ class UrlMappings {
         get "/recipe/$id"(controller: "recipe", action:"show")
         get "/ingredient"(controller: "ingredient", action:"index")
         get "/ingredient/$id"(controller: "ingredient", action:"show")
-        get "/unit/$id"(controller: "unit", action:"show")
-        get "/category/$id"(controller: "category", action:"show")
 
         "/"(controller: 'application', action:'index')
         "500"(view: '/error')

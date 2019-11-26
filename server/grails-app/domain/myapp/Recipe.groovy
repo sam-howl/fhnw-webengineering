@@ -5,16 +5,21 @@ import grails.rest.Resource
 class Recipe {
     String name
     String description
-    Category category
+    String category
 
-    static hasMany = [recipeIngredients: RecipeIngredient]
-    static fetchMode = [recipeIngredients: "eager"]
+    // 1 to many connection to Ingredients
+    static hasMany = [ingredients: Ingredient]
+
+    //static hasMany = [recipeIngredients: RecipeIngredient]
+    //static fetchMode = [ingredients: "eager"]
 
     static constraints = {
-        recipeIngredients nullable: true
+        ingredients nullable: true
     }
 
+    /*
     static mapping = {
-        recipeIngredients lazy: false
+        ingredients lazy: false
     }
+     */
 }

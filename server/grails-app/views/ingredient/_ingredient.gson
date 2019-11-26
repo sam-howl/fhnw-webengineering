@@ -1,0 +1,7 @@
+import myapp.Ingredient
+
+model {
+    Ingredient ingredient
+}
+
+json g.render(ingredient)

@@ -3,6 +3,43 @@ package myapp
 class BootStrap {
 
     def init = { servletContext ->
+
+        def eggs = new Ingredient(name: "Eggs").save()
+        def salt = new Ingredient(name: "Salt", unit: "tsp").save()
+        def pepper = new Ingredient(name: "Pepper", unit: "tsp").save()
+
+        def scrambledEggs = new Recipe(name: "Scrambled Eggs",
+                description: "Eggs in the frypan, add salt and pepper and scramble the eggs.",
+                category: "breakfast"
+        ).save()
+
+        scrambledEggs.addToIngredients(eggs).save()
+        scrambledEggs.addToIngredients(salt).save()
+        scrambledEggs.addToIngredients(pepper).save()
+
+        //prints a list with ingredients: [myapp.Ingredient : 1, myapp.Ingredient : 2, myapp.Ingredient : 3]
+        //when visiting http://localhost:8080/recipe the list is []
+        println(scrambledEggs.getIngredients())
+
+
+/*
+
+        // Zwischentabelle ohne Irgendwas
+        def eggs = new Ingredient(name: "Eggs").save()
+        def salt = new Ingredient(name: "Salt", unit: "tsp").save()
+        def pepper = new Ingredient(name: "Pepper", unit: "tsp").save()
+
+        //Recipes
+        def scrambledEggs = new Recipe(name: "Scrambled Eggs",
+                description: "Eggs in the frypan, add salt and pepper and scramble the eggs.",
+                category: "breakfast")
+                .save()
+        scrambledEggs.addToRecipeIngredients(new RecipeIngredient(recipe: scrambledEggs, ingredient: eggs, amount: 2).save()).save()
+        scrambledEggs.addToRecipeIngredients(new RecipeIngredient(recipe: scrambledEggs, ingredient: salt, amount: 0.25).save()).save()
+        scrambledEggs.addToRecipeIngredients(new RecipeIngredient(recipe: scrambledEggs, ingredient: pepper, amount: 0.25).save()).save()
+*/
+
+        /*
         //Units
         def tsp = new Unit(name: "tsp").save()
         def cup = new Unit(name: "cup").save()
@@ -32,6 +69,7 @@ class BootStrap {
         friedEggs.addToRecipeIngredients(new RecipeIngredient(recipe: friedEggs, ingredient: eggs, amount: 2).save()).save()
         friedEggs.addToRecipeIngredients(new RecipeIngredient(recipe: friedEggs, ingredient: salt, amount: 0.25).save()).save()
         friedEggs.addToRecipeIngredients(new RecipeIngredient(recipe: friedEggs, ingredient: pepper, amount: 0.25).save()).save()
+        */
     }
     def destroy = {
     }

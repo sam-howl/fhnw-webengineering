@@ -4,4 +4,4 @@ model {
     Recipe recipe
 }
 
-json g.render(recipe, [expand:['recipeIngredients'], resolveTemplate: false])
+json g.render(recipe, [expand:['ingredients'], resolveTemplate: false])
