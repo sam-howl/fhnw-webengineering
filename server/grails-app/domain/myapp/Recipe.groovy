@@ -2,7 +2,6 @@ package myapp
 
 import grails.rest.Resource
 
-
 class Recipe {
     String name
     String description

@@ -1,8 +1,6 @@
 package myapp
 
-
-import grails.rest.*
-import grails.converters.*
+import static org.springframework.http.HttpStatus.CREATED
 
 class RecipeController {
 	static responseFormats = ['json', 'xml']
@@ -13,5 +11,25 @@ class RecipeController {
 
     def show(Recipe recipe){
         respond recipe
+    }
+
+    def save(){
+        def jsonObject = request.JSON
+        def name = jsonObject.name
+        def description = jsonObject.description
+        def category = jsonObject.category
+        def ingredientsJson = jsonObject.ingredients
+
+        Recipe recipe = new Recipe(name: name,
+                description: description,
+                category: category
+        ).save(flush: true)
+
+        for (def ingredient in ingredientsJson){
+            def tempIngredient = new Ingredient(name: ingredient.name, unit: ingredient.unit).save(flush: true)
+            recipe.addToIngredients(tempIngredient).save(flush: true)
+        }
+
+        respond recipe, [formats: ['json'], status: CREATED]
     }
 }

@@ -2,7 +2,6 @@ package myapp
 
 import grails.rest.Resource
 
-@Resource(uri = "/ingredient")
 class Ingredient {
     String name
     String unit
