@@ -16,6 +16,7 @@ class UrlMappings {
         get "/ingredient"(controller: "ingredient", action:"index")
         get "/ingredient/$id"(controller: "ingredient", action:"show")
         post "/recipe"(controller: "recipe", action: "save")
+        delete "/recipe/$id"(controller: "recipe", action: "delete")
 
         "/"(controller: 'application', action:'index')
         "500"(view: '/error')

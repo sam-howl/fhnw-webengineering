@@ -1,5 +1,7 @@
 package myapp
 
+import grails.gorm.transactions.Transactional
+
 import static org.springframework.http.HttpStatus.CREATED
 
 class RecipeController {
@@ -31,5 +33,14 @@ class RecipeController {
         }
 
         respond recipe, [formats: ['json'], status: CREATED]
+    }
+
+    def delete(Recipe recipe) {
+        def ingredients = recipe.ingredients
+        for (def ingredient in ingredients){
+            ingredient.delete()
+        }
+        recipe.delete(flush: true)
+        response.status = 204
     }
 }
