@@ -27,10 +27,10 @@ const RecipeShowDialog = ({deleteRecipe, recipeId}) => {
                         </FormGroup>
 
                         <FormGroup>
-                            <Col className="clearfix" style={ { padding: '.2rem' } }>
-                                <Button className="float-right" color="danger"
+                            <Col>
+                                <Button className="modalButton" color="danger"
                                         onClick={ () => deleteRecipe(recipeId) }>Delete</Button>
-                                <Button className="float-right" color="secondary"
+                                <Button className="modalButton" color="secondary"
                                         onClick={ close }>Close</Button>
                             </Col>
                         </FormGroup>

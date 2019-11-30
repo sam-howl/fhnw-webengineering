@@ -7,6 +7,11 @@ body {
   float: left;
 }
 
+.modalButton {
+  margin: 2px;
+  float: right;
+}
+
 .recipe-image {
   border-radius: 8px;
   max-width: 100%;

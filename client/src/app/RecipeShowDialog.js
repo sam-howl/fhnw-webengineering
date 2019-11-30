@@ -11,7 +11,7 @@ const RecipeShowDialog = ({ recipe }) => {
 
     return (
         <div>
-            <Button color="secondary" onClick={ open }
+            <Button color="success" onClick={ open }
                     className="actionButton">Show</Button>
             <Modal isOpen={ showModal } toggle={ close } size="lg" autoFocus={false}>
                 <ModalHeader toggle={ close } >
@@ -19,11 +19,11 @@ const RecipeShowDialog = ({ recipe }) => {
                 </ModalHeader>
                 <ModalBody>
                     <Form>
-                        <FormGroup row>
+                        <FormGroup>
                             <Col>
-                                <Input type="text" id="formTitle"
-                                       defaultValue={ recipe.description }
-                                       className="form-control-plaintext"
+                                <Input  plaintext
+                                        readOnly
+                                        defaultValue={ recipe.description }
                                 />
                             </Col>
                         </FormGroup>
@@ -63,8 +63,8 @@ const RecipeShowDialog = ({ recipe }) => {
                         </FormGroup>
 
                         <FormGroup>
-                            <Col className="clearfix" style={ { padding: '.2rem' } }>
-                                <Button className="float-right" color="secondary"
+                            <Col>
+                                <Button className="modalButton" color="secondary"
                                         onClick={ close }>Close</Button>
                             </Col>
                         </FormGroup>
