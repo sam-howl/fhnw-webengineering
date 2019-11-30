@@ -21,6 +21,7 @@ class RecipeController {
         def description = jsonObject.description
         def category = jsonObject.category
         def minutesToMake = jsonObject.minutesToMake
+        def pictureUrl = jsonObject.pictureUrl
         def ingredientsJson = jsonObject.ingredients
 
         Recipe recipe = new Recipe(name: name,

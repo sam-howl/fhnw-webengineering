@@ -1,25 +1,16 @@
 package myapp
 
-import grails.rest.Resource
-
 class Recipe {
     String name
     String description
     String category
     Integer minutesToMake
+    String pictureUrl
 
-    // 1 to many connection to Ingredients
     static hasMany = [ingredients: Ingredient]
-
-    //static fetchMode = [ingredients: "eager"]
 
     static constraints = {
         ingredients nullable: true
+        pictureUrl nullable: true
     }
-
-    /*
-    static mapping = {
-        ingredients lazy: false
-    }
-     */
 }

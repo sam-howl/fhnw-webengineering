@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Col, Input } from 'reactstrap'
+import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Col } from 'reactstrap'
 
 const RecipeShowDialog = ({ recipe }) => {
 
@@ -28,16 +28,11 @@ const RecipeShowDialog = ({ recipe }) => {
 
                         <FormGroup>
                             <Label>Ingredients</Label>
-                            <p>
-                                <ul>
-
+                            <ul>
                                 { recipe.ingredients.map((ingredient) => {
-                                    return (<li>
-                                        {ingredient.amount} &ensp; {ingredient.unit} &ensp; {ingredient.name}
-                                    </li>)
+                                    return <li>{ingredient.amount} {ingredient.unit} {ingredient.name}</li>
                                 }) }
-                                </ul>
-                            </p>
+                            </ul>
                         </FormGroup>
 
                         <FormGroup>
@@ -59,6 +54,10 @@ const RecipeShowDialog = ({ recipe }) => {
                             <p>
                                 { recipe.category }
                             </p>
+                        </FormGroup>
+
+                        <FormGroup>
+                            <img src={recipe.pictureUrl} alt={recipe.name} />
                         </FormGroup>
 
                         <FormGroup>
