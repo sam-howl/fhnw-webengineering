@@ -5,5 +5,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './css/App.css';
 import './css/grails.css';
 import './css/main.css';
+import './css/index.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -32,7 +32,7 @@ const RecipeTable = ({recipes, deleteRecipe}) => {
                         <td>{recipe.minutesToMake}</td>
                         <td>{recipe.category}</td>
                         <td>
-                        <div className="btn-group float-right" role="group">
+                        <div className="btn-group" role="group">
                             <RecipeShowDialog recipe={recipe} />
                             <RecipeDeleteDialog deleteRecipe={deleteRecipe} recipeId={recipe.id} />
                         </div>

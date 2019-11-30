@@ -12,7 +12,7 @@ const RecipeShowDialog = ({deleteRecipe, recipeId}) => {
     return (
         <div>
             <Button color="danger" onClick={ open }
-                    className="float-right">Delete</Button>
+                    className="actionButton">Delete</Button>
             <Modal isOpen={ showModal } toggle={ close } size="lg" autoFocus={false}>
                 <ModalHeader toggle={ close } >
                     Delete Recipe

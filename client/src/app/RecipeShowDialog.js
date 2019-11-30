@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Col } from 'reactstrap'
+import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Col, Input } from 'reactstrap'
 
 const RecipeShowDialog = ({ recipe }) => {
 
@@ -12,18 +12,20 @@ const RecipeShowDialog = ({ recipe }) => {
     return (
         <div>
             <Button color="secondary" onClick={ open }
-                    className="float-right">Show</Button>
+                    className="actionButton">Show</Button>
             <Modal isOpen={ showModal } toggle={ close } size="lg" autoFocus={false}>
                 <ModalHeader toggle={ close } >
-                    Show Recipe
+                    {recipe.name}
                 </ModalHeader>
                 <ModalBody>
                     <Form>
-                        <FormGroup>
-                            <Label>Name</Label>
-                            <p>
-                                { recipe.name }
-                            </p>
+                        <FormGroup row>
+                            <Col>
+                                <Input type="text" id="formTitle"
+                                       defaultValue={ recipe.description }
+                                       className="form-control-plaintext"
+                                />
+                            </Col>
                         </FormGroup>
 
                         <FormGroup>
@@ -57,7 +59,7 @@ const RecipeShowDialog = ({ recipe }) => {
                         </FormGroup>
 
                         <FormGroup>
-                            <img src={recipe.pictureUrl} alt={recipe.name} />
+                            <img className="recipe-image" src={recipe.pictureUrl} alt={recipe.name} />
                         </FormGroup>
 
                         <FormGroup>
