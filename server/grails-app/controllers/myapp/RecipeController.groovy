@@ -20,11 +20,13 @@ class RecipeController {
         def name = jsonObject.name
         def description = jsonObject.description
         def category = jsonObject.category
+        def minutesToMake = jsonObject.minutesToMake
         def ingredientsJson = jsonObject.ingredients
 
         Recipe recipe = new Recipe(name: name,
                 description: description,
-                category: category
+                category: category,
+                minutesToMake: minutesToMake
         ).save(flush: true)
 
         for (def ingredient in ingredientsJson){

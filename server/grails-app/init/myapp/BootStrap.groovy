@@ -11,6 +11,7 @@ class BootStrap {
         def scrambledEggs = new Recipe(name: "Scrambled Eggs",
                 description: "Eggs in the frypan, add salt and pepper and scramble the eggs.",
                 category: "breakfast",
+                minutesToMake: 10,
                 ingredients: [eggs, salt, pepper]
         ).save(flush: true)
 

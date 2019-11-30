@@ -6,6 +6,7 @@ class Recipe {
     String name
     String description
     String category
+    Integer minutesToMake
 
     // 1 to many connection to Ingredients
     static hasMany = [ingredients: Ingredient]

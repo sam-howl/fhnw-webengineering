@@ -18,7 +18,6 @@ class RecipeContainer extends React.Component {
     }
 
     render() {
-        //console.log(this.state.recipes.map((recipe) => {return recipe.ingredients}))
         return(
             <div>
                 <h1>{this.state.recipes.length} recipes found</h1>
