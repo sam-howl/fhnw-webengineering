@@ -30,7 +30,7 @@ const RecipeShowDialog = ({ recipe }) => {
                             <Label>Ingredients</Label>
                             <ul>
                                 { recipe.ingredients.map((ingredient) => {
-                                    return <li>{ingredient.amount} {ingredient.unit} {ingredient.name}</li>
+                                    return <li key={ingredient.id}> {ingredient.amount} {ingredient.unit} {ingredient.name}</li>
                                 }) }
                             </ul>
                         </FormGroup>

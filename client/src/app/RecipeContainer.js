@@ -6,7 +6,24 @@ class RecipeContainer extends React.Component {
         super(props);
         this.state = {
             recipes: []
-        }
+        };
+        this.deleteRecipe = this.deleteRecipe.bind(this)
+    }
+
+    deleteRecipe(id){
+        fetch('http://localhost:8080/recipe/' + id, {
+            method: 'DELETE'
+        }).then(r => {
+            if (r.ok){
+                var recipes = this.state.recipes;
+                recipes = recipes.filter((recipe) => {
+                    return recipe.id !== id
+                });
+                this.setState({
+                    recipes: recipes
+                })
+            }
+        })
     }
 
     //Get recipes from controller
@@ -21,7 +38,7 @@ class RecipeContainer extends React.Component {
         return(
             <div>
                 <h1>{this.state.recipes.length} recipes found</h1>
-                <RecipeTable recipes={this.state.recipes} />
+                <RecipeTable recipes={this.state.recipes} deleteRecipe={this.deleteRecipe} />
             </div>)
     }
 }
