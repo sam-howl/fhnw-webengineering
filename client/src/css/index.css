@@ -33,3 +33,21 @@ body {
 .addbutton-ingredient {
   border: 2px solid;
 }
+
+.background {
+    background-image: url('../images/background.jpeg');
+    height: 200px;
+    position: relative
+}
+
+.background p {
+    font-size: larger;
+    margin-left: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%)
+}
+
+.site-title {
+    font-size: 50px;
+}

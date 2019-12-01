@@ -2,9 +2,11 @@ import React from 'react';
 import { Jumbotron } from 'react-bootstrap';
 
 const Header = ({ title, subtitle }) => (
-    <Jumbotron>
-        <h1>{title}</h1>
-        <h3>{subtitle}</h3>
-    </Jumbotron>
-)
+    <div className="background">
+        <p>
+            <h1 className="site-title">{title}</h1>
+            <h3>{subtitle}</h3>
+        </p>
+    </div>
+);
 export default Header;
