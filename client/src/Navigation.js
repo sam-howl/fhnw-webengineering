@@ -8,8 +8,8 @@ class Navigation extends React.Component {
     render() {
         return (
             <Router>
-                <div id="navigation">
-                    <Navbar color="light" light expand="md">
+                <div>
+                    <Navbar color="dark" dark expand="md">
                         <Nav className="mr-auto" navbar>
                             <NavItem>
                                 <NavLink as={Link} href="/">Recipes</NavLink>
