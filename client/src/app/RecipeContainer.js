@@ -13,9 +13,21 @@ class RecipeContainer extends React.Component {
     }
 
     createRecipe(recipe, ingredients){
-        console.log("I'm the create method")
-        console.log(recipe)
-        console.log(ingredients)
+        fetch("http://localhost:8080/recipe", {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json; charset=UTF-8'},
+            body: JSON.stringify({
+                'name': recipe.name,
+                'description': recipe.description,
+                'category': recipe.category,
+                'minutesToMake': recipe.minutesToMake,
+                'pictureUrl' : recipe.pictureUrl,
+                'ingredients' : ingredients
+            })
+        }).then(r => r.json())
+            .then(json => this.setState({
+                recipes: [...this.state.recipes, json]
+            }))
     }
 
     deleteRecipe(id){

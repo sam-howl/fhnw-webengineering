@@ -8,7 +8,10 @@ const RecipeCreateDialog = ({createRecipe}) => {
     let [ingredient, setIngredient] = useState({});
     let [ingredients, setIngredients] = useState([]);
 
-    const close = () => setShowModal(false);
+    const close = () => {
+        setShowModal(false);
+        setIngredients([])
+    };
 
     const open = () => setShowModal(true);
 
@@ -23,6 +26,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
         document.getElementById("amount").value = "";
         document.getElementById("unit").value = "";
         document.getElementById("ingredientname").value = "";
+        setIngredient({})
     };
 
     const create = () => {

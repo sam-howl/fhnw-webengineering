@@ -19,7 +19,7 @@ const RecipeTable = ({recipes, deleteRecipe}) => {
                 <tr>
                     <td className="heading">Name</td>
                     <td className="heading">Required Ingredients</td>
-                    <td className="heading">Minutes to make this dish</td>
+                    <td className="heading">Minutes to make</td>
                     <td className="heading">Category</td>
                     <td className="heading">Actions</td>
                 </tr>
