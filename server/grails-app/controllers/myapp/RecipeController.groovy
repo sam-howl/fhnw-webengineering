@@ -27,11 +27,12 @@ class RecipeController {
         Recipe recipe = new Recipe(name: name,
                 description: description,
                 category: category,
-                minutesToMake: minutesToMake
+                minutesToMake: minutesToMake,
+                pictureUrl: pictureUrl
         ).save(flush: true)
 
         for (def ingredient in ingredientsJson){
-            def tempIngredient = new Ingredient(name: ingredient.name, unit: ingredient.unit).save(flush: true)
+            def tempIngredient = new Ingredient(name: ingredient.name, unit: ingredient.unit, amount: ingredient.amount).save(flush: true)
             recipe.addToIngredients(tempIngredient).save(flush: true)
         }
 

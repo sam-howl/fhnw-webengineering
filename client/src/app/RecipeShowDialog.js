@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Col, Input } from 'reactstrap'
+import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap'
 
 const RecipeShowDialog = ({ recipe }) => {
 
@@ -50,7 +50,7 @@ const RecipeShowDialog = ({ recipe }) => {
                             />
                         </FormGroup>
                         <FormGroup>
-                            <img className="recipe-image" src={recipe.pictureUrl} alt={recipe.name} />
+                            <img className="recipe-image" src={recipe.pictureUrl} alt="Picture of recipe not available" />
                         </FormGroup>
                         <FormGroup>
                             <Button className="modalButton" color="secondary"

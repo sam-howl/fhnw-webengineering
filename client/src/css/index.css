@@ -25,3 +25,11 @@ body {
 .ingredient-list {
   margin-left: 20px;
 }
+
+.form-textarea {
+  width: 100%;
+}
+
+.addbutton-ingredient {
+  border: 2px solid;
+}
