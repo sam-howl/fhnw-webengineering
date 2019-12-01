@@ -11,7 +11,7 @@ const RecipeShowDialog = ({ recipe }) => {
 
     return (
         <div>
-            <Button color="success" onClick={ open }
+            <Button color="primary" onClick={ open }
                     className="actionButton">Show</Button>
             <Modal isOpen={ showModal } toggle={ close } size="lg" autoFocus={false}>
                 <ModalHeader toggle={ close } >

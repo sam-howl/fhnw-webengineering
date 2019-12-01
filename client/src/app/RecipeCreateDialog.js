@@ -22,22 +22,30 @@ const RecipeCreateDialog = ({createRecipe}) => {
         setIngredient({ ...ingredient, [event.target.name]: event.target.value });
 
     const addIngredient = () => {
-        setIngredients([...ingredients, ingredient]);
-        document.getElementById("amount").value = "";
-        document.getElementById("unit").value = "";
-        document.getElementById("ingredientname").value = "";
-        setIngredient({})
+        if (ingredient.amount && ingredient.amount.match(/\d+\.\d*|\.?\d+/) && ingredient.amount > 0 && ingredient.name){
+            setIngredients([...ingredients, ingredient]);
+            document.getElementById("amount").value = "";
+            document.getElementById("unit").value = "";
+            document.getElementById("ingredientname").value = "";
+            setIngredient({})
+        } else {
+            console.error("not added")
+        }
     };
 
     const create = () => {
-        createRecipe(recipe, ingredients);
-        close()
+        if (recipe.name && recipe.description && recipe.category && recipe.minutesToMake && recipe.minutesToMake.match(/^[1-9]\d*$/) && ingredients.length > 0){
+            createRecipe(recipe, ingredients);
+            close()
+        } else {
+            console.error("not added")
+        }
     };
 
     return (
         <div>
             <Button color="success" onClick={ open }
-                    className="actionButton">Create</Button>
+                    className="createButton">Create recipe</Button>
             <Modal isOpen={ showModal } toggle={ close } size="lg" autoFocus={false}>
                 <ModalHeader toggle={ close } >
                     Create a new recipe
