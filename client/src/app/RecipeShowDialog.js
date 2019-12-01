@@ -20,59 +20,47 @@ const RecipeShowDialog = ({ recipe }) => {
                 <ModalBody>
                     <Form>
                         <FormGroup>
-                            <Col>
-                                <Input  plaintext
-                                        readOnly
-                                        defaultValue={ recipe.description }
-                                />
-                            </Col>
+                            <Label className="heading">Ingredients</Label>
+                            <div>
+                                <ul className="ingredient-list">
+                                    { recipe.ingredients.map((ingredient) => {
+                                        return <li key={ingredient.id}> {ingredient.amount} {ingredient.unit} {ingredient.name}</li>
+                                    }) }
+                                </ul>
+                            </div>
                         </FormGroup>
-
                         <FormGroup>
-                            <Label>Ingredients</Label>
-                            <ul>
-                                { recipe.ingredients.map((ingredient) => {
-                                    return <li key={ingredient.id}> {ingredient.amount} {ingredient.unit} {ingredient.name}</li>
-                                }) }
-                            </ul>
+                            <Label className="heading">Description</Label>
+                            <div>
+                                {recipe.description}
+                            </div>
                         </FormGroup>
-
                         <FormGroup>
-                            <Label>Description</Label>
-                            <p>
-                                { recipe.description }
-                            </p>
+                            <Label className="heading">Expenditure of time</Label>
+                            <Input  readOnly
+                                    defaultValue={ recipe.minutesToMake + " minutes" }
+                                    plaintext
+                            />
                         </FormGroup>
-
                         <FormGroup>
-                            <Label>Minutes to make the dish</Label>
-                            <p>
-                                { recipe.minutesToMake }
-                            </p>
+                            <Label className="heading">Category</Label>
+                            <Input  readOnly
+                                    defaultValue={ recipe.category }
+                                    plaintext
+                            />
                         </FormGroup>
-
-                        <FormGroup>
-                            <Label>Category</Label>
-                            <p>
-                                { recipe.category }
-                            </p>
-                        </FormGroup>
-
                         <FormGroup>
                             <img className="recipe-image" src={recipe.pictureUrl} alt={recipe.name} />
                         </FormGroup>
-
                         <FormGroup>
-                            <Col>
-                                <Button className="modalButton" color="secondary"
-                                        onClick={ close }>Close</Button>
-                            </Col>
+                            <Button className="modalButton" color="secondary"
+                                    onClick={ close }>Close</Button>
                         </FormGroup>
                     </Form>
                 </ModalBody>
             </Modal>
         </div>
     )
-}
+};
 
 export default RecipeShowDialog

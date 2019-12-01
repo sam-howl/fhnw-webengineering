@@ -17,11 +17,11 @@ const RecipeTable = ({recipes, deleteRecipe}) => {
             <Table striped bordered hover>
                 <thead>
                 <tr>
-                    <td>Name</td>
-                    <td>Required Ingredients</td>
-                    <td>Minutes to make this dish</td>
-                    <td>Category</td>
-                    <td>Actions</td>
+                    <td className="heading">Name</td>
+                    <td className="heading">Required Ingredients</td>
+                    <td className="heading">Minutes to make this dish</td>
+                    <td className="heading">Category</td>
+                    <td className="heading">Actions</td>
                 </tr>
                 </thead>
                 <tbody>
