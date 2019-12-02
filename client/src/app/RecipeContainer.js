@@ -59,7 +59,6 @@ class RecipeContainer extends React.Component {
             <div>
                 <RecipeCreateDialog createRecipe={this.createRecipe}/>
                 <RecipeTable recipes={this.state.recipes} deleteRecipe={this.deleteRecipe} />
-                <h1>{this.state.recipes.length} recipes found</h1>
             </div>)
     }
 }

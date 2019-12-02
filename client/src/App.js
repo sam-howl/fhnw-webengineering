@@ -2,7 +2,6 @@ import React from 'react';
 import 'whatwg-fetch';
 import Header from "./Header"
 import Navigation from "./Navigation";
-import RecipeContainer from "./app/RecipeContainer";
 import Footer from "./Footer";
 
 const App = () => (
