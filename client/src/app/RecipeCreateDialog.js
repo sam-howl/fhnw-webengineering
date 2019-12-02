@@ -22,7 +22,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
         setIngredient({ ...ingredient, [event.target.name]: event.target.value });
 
     const addIngredient = () => {
-        if (ingredient.amount && ingredient.amount.match(/\d+\.\d*|\.?\d+/) && ingredient.amount > 0 && ingredient.name){
+        if (ingredient.amount && ingredient.amount.match("^[0-9]+([.,][0-9]+)?$") && ingredient.name){
             setIngredients([...ingredients, ingredient]);
             document.getElementById("amount").value = "";
             document.getElementById("unit").value = "";
@@ -34,7 +34,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
     };
 
     const create = () => {
-        if (recipe.name && recipe.description && recipe.category && recipe.minutesToMake && recipe.minutesToMake.match(/^[1-9]\d*$/) && ingredients.length > 0){
+        if (recipe.name && recipe.description && recipe.category && recipe.minutesToMake && recipe.minutesToMake.match("^[0-9]*$") && ingredients.length > 0){
             createRecipe(recipe, ingredients);
             close()
         } else {
@@ -57,6 +57,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
                             <Input  type="text"
                                     name='name'
                                     onChange={changeRecipe}
+                                    required
                             />
                         </FormGroup>
                         <FormGroup>
@@ -77,6 +78,8 @@ const RecipeCreateDialog = ({createRecipe}) => {
                                             name='amount'
                                             id='amount'
                                             onChange={changeIngredient}
+                                            pattern="^[0-9]+([.,][0-9]+)?$"
+                                            required
                                     />
                                 </Col>
                                 <Label>Unit</Label>
@@ -93,6 +96,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
                                             name='name'
                                             id='ingredientname'
                                             onChange={changeIngredient}
+                                            required
                                     />
                                 </Col>
                                 <Col>
@@ -105,6 +109,8 @@ const RecipeCreateDialog = ({createRecipe}) => {
                             <textarea className="form-textarea"
                                       name='description'
                                       onChange={changeRecipe}
+                                      maxLength="255"
+                                      required
                             />
                         </FormGroup>
                         <FormGroup>
@@ -112,6 +118,8 @@ const RecipeCreateDialog = ({createRecipe}) => {
                             <Input  type="text"
                                     name='minutesToMake'
                                     onChange={changeRecipe}
+                                    pattern="^[0-9]*$"
+                                    required
                             />
                         </FormGroup>
                         <FormGroup>
@@ -119,6 +127,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
                             <Input  type="text"
                                     name='category'
                                     onChange={changeRecipe}
+                                    required
                             />
                         </FormGroup>
                         <FormGroup>
