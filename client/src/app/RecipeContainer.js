@@ -1,6 +1,7 @@
 import React from 'react';
 import RecipeTable from './RecipeTable';
 import RecipeCreateDialog from "./RecipeCreateDialog";
+import {SERVER_URL} from "../config"
 
 class RecipeContainer extends React.Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class RecipeContainer extends React.Component {
     }
 
     createRecipe(recipe, ingredients){
-        fetch("http://localhost:8080/recipe", {
+        fetch(SERVER_URL + "recipe", {
             method: 'POST',
             headers: {'Content-Type': 'application/json; charset=UTF-8'},
             body: JSON.stringify({
@@ -31,7 +32,7 @@ class RecipeContainer extends React.Component {
     }
 
     deleteRecipe(id){
-        fetch('http://localhost:8080/recipe/' + id, {
+        fetch(SERVER_URL + 'recipe/' + id, {
             method: 'DELETE'
         }).then(r => {
             if (r.ok){
@@ -48,7 +49,7 @@ class RecipeContainer extends React.Component {
 
     //Get recipes from controller
     componentDidMount() {
-        fetch('http://localhost:8080/recipe')
+        fetch(SERVER_URL + 'recipe')
             .then(r => r.json())
             .then(json => this.setState({recipes: json}))
             .catch(error => console.error('Error retrieving recipes: ' + error));
