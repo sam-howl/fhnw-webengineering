@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = ({ message }) => (
     <div className="footer">
-        <h3>&copy; {message}</h3>
+        <h6>&copy; {message}</h6>
     </div>
 
 );
