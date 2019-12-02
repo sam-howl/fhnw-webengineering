@@ -1,9 +1,5 @@
 package myapp
 
-
-import grails.rest.*
-import grails.converters.*
-
 class IngredientController {
 	static responseFormats = ['json', 'xml']
 

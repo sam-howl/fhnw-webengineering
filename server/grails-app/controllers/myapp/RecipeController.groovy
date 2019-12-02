@@ -1,7 +1,5 @@
 package myapp
 
-import grails.gorm.transactions.Transactional
-
 import static org.springframework.http.HttpStatus.CREATED
 
 class RecipeController {
