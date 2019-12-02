@@ -6,6 +6,7 @@ class Ingredient {
     String unit
 
     static constraints = {
-        unit nullable: true
+        name maxSize: 255
+        unit nullable: true, maxSize: 255
     }
 }

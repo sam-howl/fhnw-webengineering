@@ -58,6 +58,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
                                     name='name'
                                     onChange={changeRecipe}
                                     required
+                                    maxLength="255"
                             />
                         </FormGroup>
                         <FormGroup>
@@ -88,6 +89,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
                                             name='unit'
                                             id='unit'
                                             onChange={changeIngredient}
+                                            maxLength="255"
                                     />
                                 </Col>
                                 <Label>Ingredient name</Label>
@@ -97,6 +99,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
                                             id='ingredientname'
                                             onChange={changeIngredient}
                                             required
+                                            maxLength="255"
                                     />
                                 </Col>
                                 <Col>
@@ -120,6 +123,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
                                     onChange={changeRecipe}
                                     pattern="^[0-9]*$"
                                     required
+                                    maxLength="255"
                             />
                         </FormGroup>
                         <FormGroup>
@@ -128,6 +132,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
                                     name='category'
                                     onChange={changeRecipe}
                                     required
+                                    maxLength="255"
                             />
                         </FormGroup>
                         <FormGroup>
@@ -135,6 +140,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
                             <Input  type="text"
                                     name='pictureUrl'
                                     onChange={changeRecipe}
+                                    maxLength="255"
                             />
                         </FormGroup>
                         <FormGroup>
