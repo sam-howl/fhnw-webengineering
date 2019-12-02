@@ -63,3 +63,11 @@ body {
     bottom: 0;
     background-color: transparent;
 }
+
+.formerrormessage {
+    color: red;
+    background-color: #fff3f3;
+    border: 2px solid;
+    border-color: red;
+    margin-top: 3px;
+}

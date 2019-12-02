@@ -7,10 +7,14 @@ const RecipeCreateDialog = ({createRecipe}) => {
     let [recipe, setRecipe] = useState({});
     let [ingredient, setIngredient] = useState({});
     let [ingredients, setIngredients] = useState([]);
+    let [validIngredient, setValidIngredient] = useState(true);
+    let [validRecipe, setValidRecipe] = useState(true);
 
     const close = () => {
         setShowModal(false);
-        setIngredients([])
+        setIngredients([]);
+        setValidIngredient(true);
+        setValidRecipe(true);
     };
 
     const open = () => setShowModal(true);
@@ -21,24 +25,36 @@ const RecipeCreateDialog = ({createRecipe}) => {
     const changeIngredient = event =>
         setIngredient({ ...ingredient, [event.target.name]: event.target.value });
 
+    const checkIfBlank = (value) => {
+        var trimmedValue = value.trim()
+        if (trimmedValue == ''){
+            return false
+        }
+        return true
+    };
+
     const addIngredient = () => {
-        if (ingredient.amount && ingredient.amount.match("^[0-9]+([.,][0-9]+)?$") && ingredient.name){
+        if (ingredient.amount && ingredient.amount.match("^[0-9]+([.,][0-9]+)?$") && ingredient.name
+            && checkIfBlank(ingredient.name)){
             setIngredients([...ingredients, ingredient]);
             document.getElementById("amount").value = "";
             document.getElementById("unit").value = "";
             document.getElementById("ingredientname").value = "";
+            setValidIngredient(true);
             setIngredient({})
         } else {
-            console.error("not added")
+            setValidIngredient(false);
         }
     };
 
     const create = () => {
-        if (recipe.name && recipe.description && recipe.category && recipe.minutesToMake && recipe.minutesToMake.match("^[0-9]*$") && ingredients.length > 0){
+        if (recipe.name && checkIfBlank(recipe.name) && recipe.description && checkIfBlank(recipe.description)
+            && recipe.category && checkIfBlank(recipe.category) && recipe.minutesToMake
+            && recipe.minutesToMake.match("^[0-9]*$") && ingredients.length > 0){
             createRecipe(recipe, ingredients);
             close()
         } else {
-            console.error("not added")
+            setValidRecipe(false)
         }
     };
 
@@ -56,8 +72,8 @@ const RecipeCreateDialog = ({createRecipe}) => {
                             <Label className="heading">Recipe name</Label>
                             <Input  type="text"
                                     name='name'
-                                    onChange={changeRecipe}
                                     required
+                                    onChange={changeRecipe}
                                     maxLength="255"
                             />
                         </FormGroup>
@@ -142,6 +158,10 @@ const RecipeCreateDialog = ({createRecipe}) => {
                                     onChange={changeRecipe}
                                     maxLength="255"
                             />
+                        </FormGroup>
+                        <FormGroup>
+                                { validIngredient ? null : <div className="formerrormessage"> Please check your entries in the ingredient input fields.</div> }
+                                { validRecipe ? null : <div className="formerrormessage">Please check your entries in the recipe input fields.</div> }
                         </FormGroup>
                         <FormGroup>
                             <Button className="modalButton" color="success"
