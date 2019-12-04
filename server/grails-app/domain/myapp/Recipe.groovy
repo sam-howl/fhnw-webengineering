@@ -13,7 +13,6 @@ class Recipe {
         name maxSize: 255, blank: false
         description maxSize: 255, blank: false
         category maxSize: 255, blank: false
-        ingredients nullable: true
         pictureUrl nullable: true, maxSize: 255, blank: false
     }
 }
