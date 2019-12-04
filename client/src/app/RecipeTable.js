@@ -2,8 +2,9 @@ import React from 'react';
 import {Table} from 'react-bootstrap';
 import RecipeShowDialog from "./RecipeShowDialog";
 import RecipeDeleteDialog from "./RecipeDeleteDialog";
+import RecipeUpdateDialog from "./RecipeUpdateDialog";
 
-const RecipeTable = ({recipes, deleteRecipe}) => {
+const RecipeTable = ({recipes, deleteRecipe, updateRecipe}) => {
 
         const getIngredientsNames = (ingredients) => {
             var ingredientList = [];
@@ -34,6 +35,7 @@ const RecipeTable = ({recipes, deleteRecipe}) => {
                         <td>
                         <div className="btn-group" role="group">
                             <RecipeShowDialog recipe={recipe} />
+                            <RecipeUpdateDialog oldRecipe={recipe} updateRecipe={updateRecipe} />
                             <RecipeDeleteDialog deleteRecipe={deleteRecipe} recipeId={recipe.id} />
                         </div>
                         </td>

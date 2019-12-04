@@ -10,9 +10,11 @@ class RecipeContainer extends React.Component {
             recipes: []
         };
         this.createRecipe = this.createRecipe.bind(this);
+        this.updateRecipe = this.updateRecipe.bind(this);
         this.deleteRecipe = this.deleteRecipe.bind(this);
     }
 
+    //Create a recipe and save it into the in-memory database
     createRecipe(recipe, ingredients){
         fetch(SERVER_URL + "recipe", {
             method: 'POST',
@@ -31,6 +33,12 @@ class RecipeContainer extends React.Component {
             }))
     }
 
+    //Update a recipe in the in-memory database
+    updateRecipe(recipe, ingredients){
+        console.log("I'm a update function")
+    }
+
+    //Delete a recipe from the in-memory database
     deleteRecipe(id){
         fetch(SERVER_URL + 'recipe/' + id, {
             method: 'DELETE'
@@ -59,7 +67,7 @@ class RecipeContainer extends React.Component {
         return(
             <div>
                 <RecipeCreateDialog createRecipe={this.createRecipe}/>
-                <RecipeTable recipes={this.state.recipes} deleteRecipe={this.deleteRecipe} />
+                <RecipeTable recipes={this.state.recipes} deleteRecipe={this.deleteRecipe} updateRecipe={this.updateRecipe()} />
             </div>)
     }
 }
