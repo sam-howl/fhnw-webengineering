@@ -35,7 +35,27 @@ class RecipeContainer extends React.Component {
 
     //Update a recipe in the in-memory database
     updateRecipe(recipe, ingredients){
-        console.log("I'm a update function")
+        fetch(SERVER_URL + "recipe/" + recipe.id, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json; charset=UTF-8'},
+            body: JSON.stringify({
+                'id': recipe.id,
+                'name': recipe.name,
+                'description': recipe.description,
+                'category': recipe.category,
+                'minutesToMake': recipe.minutesToMake,
+                'pictureUrl' : recipe.pictureUrl,
+                'ingredients' : ingredients
+            })
+        }).then(r => r.json())
+            .then(json => {
+                let recipesList = this.state.recipes;
+                let index = recipesList.findIndex((r) => r.id === recipe.id);
+                recipesList[index] = json;
+                this.setState({
+                    recipes: recipesList
+                })
+            })
     }
 
     //Delete a recipe from the in-memory database
@@ -67,7 +87,7 @@ class RecipeContainer extends React.Component {
         return(
             <div>
                 <RecipeCreateDialog createRecipe={this.createRecipe}/>
-                <RecipeTable recipes={this.state.recipes} deleteRecipe={this.deleteRecipe} updateRecipe={this.updateRecipe()} />
+                <RecipeTable recipes={this.state.recipes} deleteRecipe={this.deleteRecipe} updateRecipe={this.updateRecipe} />
             </div>)
     }
 }

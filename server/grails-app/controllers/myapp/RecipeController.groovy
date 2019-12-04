@@ -1,6 +1,7 @@
 package myapp
 
 import static org.springframework.http.HttpStatus.CREATED
+import static org.springframework.http.HttpStatus.OK
 
 class RecipeController {
 	static responseFormats = ['json', 'xml']
@@ -44,5 +45,10 @@ class RecipeController {
         }
         recipe.delete(flush: true)
         response.status = 204
+    }
+
+    def update(Recipe recipe) {
+        def newRecipe = recipe.save(flush: true)
+        respond newRecipe, [formats: ['json'], status: OK]
     }
 }

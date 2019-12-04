@@ -4,23 +4,20 @@ import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input, C
 const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
 
     let [showModal, setShowModal] = useState(false);
-    let [recipe, setRecipe] = useState({});
+    let [recipe, setRecipe] = useState(oldRecipe);
     let [ingredient, setIngredient] = useState({});
-    let [ingredients, setIngredients] = useState([]);
+    let [ingredients, setIngredients] = useState(oldRecipe.ingredients);
     let [validIngredient, setValidIngredient] = useState(true);
     let [validRecipe, setValidRecipe] = useState(true);
 
     const close = () => {
         setShowModal(false);
-        setIngredients([]);
         setValidIngredient(true);
         setValidRecipe(true);
     };
 
     const open = () => {
         setShowModal(true);
-        setRecipe(oldRecipe);
-        setIngredients(oldRecipe.ingredients);
     };
 
     const changeRecipe = event =>
@@ -28,6 +25,12 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
 
     const changeIngredient = event =>
         setIngredient({ ...ingredient, [event.target.name]: event.target.value });
+
+    const updateIngredients = (event, index) => {
+        let ingredientList = ingredients;
+        ingredientList[index][event.target.name] = event.target.value;
+        setIngredients(ingredientList)
+    };
 
     const checkIfBlank = (value) => {
         var trimmedValue = value.trim()
@@ -54,7 +57,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
     const update = () => {
         if (recipe.name && checkIfBlank(recipe.name) && recipe.description && checkIfBlank(recipe.description)
             && recipe.category && checkIfBlank(recipe.category) && recipe.minutesToMake
-            && recipe.minutesToMake.match("^[0-9]*$") && ingredients.length > 0){
+            && recipe.minutesToMake.toString().match("^[0-9]*$") && ingredients.length > 0){
             updateRecipe(recipe, ingredients);
             close()
         } else {
@@ -79,18 +82,8 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
                                     required
                                     onChange={changeRecipe}
                                     maxLength="255"
-                                    value={recipe.name}
+                                    defaultValue={recipe.name}
                             />
-                        </FormGroup>
-                        <FormGroup>
-                            <Label className="heading">Ingredients</Label>
-                            <div>
-                                <ul className="ingredient-list">
-                                    { ingredients.map((ingredient, index) => {
-                                        return <li key={index}> {ingredient.amount} {ingredient.unit} {ingredient.name}</li>
-                                    }) }
-                                </ul>
-                            </div>
                         </FormGroup>
                         <FormGroup>
                             <ul className="ingredient-list">
@@ -101,41 +94,71 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
                                             <Col>
                                                 <Input  type="text"
                                                         name='amount'
-                                                        id='amount'
-                                                        onChange={changeIngredient}
                                                         pattern="^[0-9]+([.,][0-9]+)?$"
                                                         required
-                                                        value={ingredient.amount}
+                                                        defaultValue={ingredient.amount}
+                                                        onChange={(event) => updateIngredients(event, index)}
                                                 />
                                             </Col>
                                             <Label>Unit</Label>
                                             <Col>
                                                 <Input  type="text"
                                                         name='unit'
-                                                        id='unit'
-                                                        onChange={changeIngredient}
+                                                        onChange={(event) => updateIngredients(event, index)}
                                                         maxLength="255"
-                                                        value={ingredient.unit}
+                                                        defaultValue={ingredient.unit}
                                                 />
                                             </Col>
                                             <Label>Ingredient name</Label>
                                             <Col>
                                                 <Input  type="text"
                                                         name='name'
-                                                        id='ingredientname'
-                                                        onChange={changeIngredient}
+                                                        onChange={(event) => updateIngredients(event, index)}
                                                         required
                                                         maxLength="255"
-                                                        value={ingredient.name}
+                                                        defaultValue={ingredient.name}
                                                 />
-                                            </Col>
-                                            <Col>
-                                                <Button color="outline-success" onClick={ addIngredient } className="addbutton-ingredient">+</Button>
                                             </Col>
                                         </Row>
                                     )
                                 }) }
                             </ul>
+                        </FormGroup>
+                        <FormGroup>
+                            <Row>
+                                <Label>Amount</Label>
+                                <Col>
+                                    <Input  type="text"
+                                            name='amount'
+                                            id='amount'
+                                            onChange={changeIngredient}
+                                            pattern="^[0-9]+([.,][0-9]+)?$"
+                                            required
+                                    />
+                                </Col>
+                                <Label>Unit</Label>
+                                <Col>
+                                    <Input  type="text"
+                                            name='unit'
+                                            id='unit'
+                                            onChange={changeIngredient}
+                                            maxLength="255"
+                                    />
+                                </Col>
+                                <Label>Ingredient name</Label>
+                                <Col>
+                                    <Input  type="text"
+                                            name='name'
+                                            id='ingredientname'
+                                            onChange={changeIngredient}
+                                            required
+                                            maxLength="255"
+                                    />
+                                </Col>
+                                <Col>
+                                    <Button color="outline-success" onClick={ addIngredient } className="addbutton-ingredient">+</Button>
+                                </Col>
+                            </Row>
                         </FormGroup>
                         <FormGroup>
                             <Label className="heading">Description</Label><br />
@@ -144,7 +167,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
                                       onChange={changeRecipe}
                                       maxLength="255"
                                       required
-                                      value={recipe.description}
+                                      defaultValue={recipe.description}
                             />
                         </FormGroup>
                         <FormGroup>
@@ -155,7 +178,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
                                     pattern="^[0-9]*$"
                                     required
                                     maxLength="255"
-                                    value={recipe.minutesToMake}
+                                    defaultValue={recipe.minutesToMake}
                             />
                         </FormGroup>
                         <FormGroup>
@@ -165,7 +188,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
                                     onChange={changeRecipe}
                                     required
                                     maxLength="255"
-                                    value={recipe.category}
+                                    defaultValue={recipe.category}
                             />
                         </FormGroup>
                         <FormGroup>
@@ -174,7 +197,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
                                     name='pictureUrl'
                                     onChange={changeRecipe}
                                     maxLength="255"
-                                    value={recipe.pictureUrl}
+                                    defaultValue={recipe.pictureUrl}
                             />
                         </FormGroup>
                         <FormGroup>
