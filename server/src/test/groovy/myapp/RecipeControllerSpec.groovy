@@ -10,9 +10,4 @@ class RecipeControllerSpec extends Specification implements ControllerUnitTest<R
 
     def cleanup() {
     }
-
-    void "test something"() {
-        expect:"fix me"
-        true == false
-    }
 }
