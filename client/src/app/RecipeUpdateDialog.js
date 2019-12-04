@@ -54,6 +54,11 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
         }
     };
 
+    const removeIngredient = (ingredientId) => {
+        var ingredientsList = ingredients.filter((i) => i.id !== ingredientId);
+        setIngredients(ingredientsList)
+    };
+
     const update = () => {
         if (recipe.name && checkIfBlank(recipe.name) && recipe.description && checkIfBlank(recipe.description)
             && recipe.category && checkIfBlank(recipe.category) && recipe.minutesToMake
@@ -119,6 +124,9 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
                                                         defaultValue={ingredient.name}
                                                 />
                                             </Col>
+                                            <Col>
+                                                <Button color="outline-danger" onClick={ () => removeIngredient(ingredient.id) } className="ingredient-button">-</Button>
+                                            </Col>
                                         </Row>
                                     )
                                 }) }
@@ -156,7 +164,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
                                     />
                                 </Col>
                                 <Col>
-                                    <Button color="outline-success" onClick={ addIngredient } className="addbutton-ingredient">+</Button>
+                                    <Button color="outline-success" onClick={ addIngredient } className="ingredient-button">+</Button>
                                 </Col>
                             </Row>
                         </FormGroup>
