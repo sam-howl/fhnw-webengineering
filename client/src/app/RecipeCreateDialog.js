@@ -25,6 +25,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
     const changeIngredient = event =>
         setIngredient({ ...ingredient, [event.target.name]: event.target.value });
 
+    //test to check if field contains only spaces
     const checkIfBlank = (value) => {
         var trimmedValue = value.trim()
         if (trimmedValue == ''){
@@ -34,6 +35,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
     };
 
     const addIngredient = () => {
+        //check if all requirements are fulfilled
         if (ingredient.amount && ingredient.amount.match("^[0-9]+([.,][0-9]+)?$") && ingredient.name
             && checkIfBlank(ingredient.name)){
             setIngredients([...ingredients, ingredient]);
@@ -48,6 +50,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
     };
 
     const create = () => {
+        //check if all requirements are fulfilled
         if (recipe.name && checkIfBlank(recipe.name) && recipe.description && checkIfBlank(recipe.description)
             && recipe.category && checkIfBlank(recipe.category) && recipe.minutesToMake
             && recipe.minutesToMake.match("^[0-9]*$") && ingredients.length > 0){

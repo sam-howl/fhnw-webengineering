@@ -23,10 +23,25 @@ class BootStrap {
         def greenGhost = new Recipe(name: "Green Ghost",
                 description: "Fill a cocktail shaker with ice. Add gin, Chartreuse, and lime juice. Shake until well chilled, about 15 seconds. Strain into cocktail glass and serve.",
                 category: "Drinks",
-                minutesToMake: 10,
+                minutesToMake: 7,
                 pictureUrl: "https://www.seriouseats.com/recipes/images/2015/06/20150618-three-ingredient-cocktails-green-ghost-vicky-wasik.jpg",
                 ingredients: [gin, greenChartreuse, limeJuice]
         ).save(flush: true)
+
+        def licor43 = new Ingredient(name:"Licor 43", unit: "ounce", amount: 1).save(flush: true)
+        def vodka = new Ingredient(name:"Vodka", unit: "ounce", amount: 1).save(flush: true)
+        def orangeJuice = new Ingredient(name:"Orange juice", unit: "ounces", amount: 3).save(flush: true)
+        def ice = new Ingredient(name:"Ice cubes", amount: 4).save(flush: true)
+
+
+        def screwdriver = new Recipe(name: "43 Screwdriver",
+                description: "In a tall glass, combine an ounce of vodka, an ounce of Licor 43, and three ounces of orange juice. Give a quick stir, then add ice. Garnish with three orange half-moons and a cinnamon stick.",
+                category: "Drinks",
+                minutesToMake: 5,
+                pictureUrl: "https://cdn-image.foodandwine.com/sites/default/files/1491231273/licor-43-cocktails-1-FT-BLOG0417.jpg",
+                ingredients: [licor43, vodka, orangeJuice, ice]
+        ).save(flush: true)
+
     }
     def destroy = {
     }

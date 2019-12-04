@@ -23,15 +23,18 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
     const changeRecipe = event =>
         setRecipe({ ...recipe, [event.target.name]: event.target.value });
 
+    //change the attributes of a new ingredient
     const changeIngredient = event =>
         setIngredient({ ...ingredient, [event.target.name]: event.target.value });
 
+    //update an existing ingredient
     const updateIngredients = (event, index) => {
         let ingredientList = ingredients;
         ingredientList[index][event.target.name] = event.target.value;
         setIngredients(ingredientList)
     };
 
+    //test to check if field contains only spaces
     const checkIfBlank = (value) => {
         var trimmedValue = value.trim()
         if (trimmedValue == ''){
@@ -41,6 +44,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
     };
 
     const addIngredient = () => {
+        //check if all requirements are fulfilled
         if (ingredient.amount && ingredient.amount.match("^[0-9]+([.,][0-9]+)?$") && ingredient.name
             && checkIfBlank(ingredient.name)){
             setIngredients([...ingredients, ingredient]);
@@ -54,12 +58,14 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
         }
     };
 
+    //remove an ingredient from the list
     const removeIngredient = (ingredientId) => {
         var ingredientsList = ingredients.filter((i) => i.id !== ingredientId);
         setIngredients(ingredientsList)
     };
 
     const update = () => {
+        //check if all requirements are fulfilled
         if (recipe.name && checkIfBlank(recipe.name) && recipe.description && checkIfBlank(recipe.description)
             && recipe.category && checkIfBlank(recipe.category) && recipe.minutesToMake
             && recipe.minutesToMake.toString().match("^[0-9]*$") && ingredients.length > 0){
