@@ -133,7 +133,7 @@ const RecipeCreateDialog = ({createRecipe}) => {
                             />
                         </FormGroup>
                         <FormGroup>
-                            <Label className="heading">Expenditure of time</Label>
+                            <Label className="heading">Expenditure of time in minutes</Label>
                             <Input  type="text"
                                     name='minutesToMake'
                                     onChange={changeRecipe}
@@ -160,8 +160,14 @@ const RecipeCreateDialog = ({createRecipe}) => {
                             />
                         </FormGroup>
                         <FormGroup>
-                                { validIngredient ? null : <div className="formerrormessage"> Please check your entries in the ingredient input fields.</div> }
-                                { validRecipe ? null : <div className="formerrormessage">Please check your entries in the recipe input fields.</div> }
+                                { validIngredient ? null : <div className="formerrormessage">Ingredient cannot be added!
+                                    Please check your entries in the ingredient input fields. Possible reasons
+                                    for this error can be missing required fields, only blanks in a field or wrong type
+                                    in a field.</div> }
+                                { validRecipe ? null : <div className="formerrormessage">Recipe cannot be created! Please
+                                    check your entries in the recipe input fields. Possible reasons
+                                    for this error can be missing required fields, only blanks in a field, wrong type
+                                    in a field or missing ingredients in a recipe.</div> }
                         </FormGroup>
                         <FormGroup>
                             <Button className="modalButton" color="success"

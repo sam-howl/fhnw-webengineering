@@ -50,7 +50,7 @@ const RecipeShowDialog = ({ recipe }) => {
                             />
                         </FormGroup>
                         <FormGroup>
-                            <img className="recipe-image" src={recipe.pictureUrl} alt="Picture of recipe not available" />
+                            { recipe.pictureUrl ? <img className="recipe-image" src={recipe.pictureUrl} alt="Picture of recipe not available" /> : null}
                         </FormGroup>
                         <FormGroup>
                             <Button className="modalButton" color="secondary"
