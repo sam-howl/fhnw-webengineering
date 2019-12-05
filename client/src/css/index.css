@@ -71,3 +71,5 @@ body {
     border-color: red;
     margin-top: 3px;
 }
+
+.close {display: none;}

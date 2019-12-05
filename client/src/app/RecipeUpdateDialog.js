@@ -10,6 +10,13 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
     let [validIngredient, setValidIngredient] = useState(true);
     let [validRecipe, setValidRecipe] = useState(true);
 
+    const undoChanges = () => {
+        //reset all changes to original values
+        setIngredients(oldRecipe.ingredients);
+        setRecipe(oldRecipe);
+        close()
+    };
+
     const close = () => {
         setShowModal(false);
         setValidIngredient(true);
@@ -59,8 +66,14 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
     };
 
     //remove an ingredient from the list
-    const removeIngredient = (ingredientId) => {
-        var ingredientsList = ingredients.filter((i) => i.id !== ingredientId);
+    const removeIngredient = (index) => {
+        var originalList = ingredients
+        var ingredientsList = []
+        for (var i = 0; i < originalList.length; i++) {
+            if (i !== index){
+                ingredientsList.push(originalList[i])
+            }
+        }
         setIngredients(ingredientsList)
     };
 
@@ -80,7 +93,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
         <div>
             <Button color="secondary" onClick={ open }
                     className="actionButton">Update</Button>
-            <Modal isOpen={ showModal } toggle={ close } size="lg" autoFocus={false}>
+            <Modal isOpen={ showModal } toggle={ close } size="lg" autoFocus={false} backdrop="static" keyboard={false}>
                 <ModalHeader toggle={ close } >
                     Update a recipe
                 </ModalHeader>
@@ -107,7 +120,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
                                                         name='amount'
                                                         pattern="^[0-9]+([.,][0-9]+)?$"
                                                         required
-                                                        defaultValue={ingredient.amount}
+                                                        value={ingredient.amount || ''}
                                                         onChange={(event) => updateIngredients(event, index)}
                                                 />
                                             </Col>
@@ -117,7 +130,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
                                                         name='unit'
                                                         onChange={(event) => updateIngredients(event, index)}
                                                         maxLength="255"
-                                                        defaultValue={ingredient.unit}
+                                                        value={ingredient.unit || ''}
                                                 />
                                             </Col>
                                             <Label>Ingredient name</Label>
@@ -127,11 +140,11 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
                                                         onChange={(event) => updateIngredients(event, index)}
                                                         required
                                                         maxLength="255"
-                                                        defaultValue={ingredient.name}
+                                                        value={ingredient.name || ''}
                                                 />
                                             </Col>
                                             <Col>
-                                                <Button color="outline-danger" onClick={ () => removeIngredient(ingredient.id) } className="ingredient-button">-</Button>
+                                                <Button color="outline-danger" onClick={ () => removeIngredient(index) } className="ingredient-button">-</Button>
                                             </Col>
                                         </Row>
                                     )
@@ -228,7 +241,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
                             <Button className="modalButton" color="success"
                                     onClick={ update }>Update recipe</Button>
                             <Button className="modalButton" color="secondary"
-                                    onClick={ close }>Close</Button>
+                                    onClick={ undoChanges }>Close</Button>
                         </FormGroup>
                     </Form>
                 </ModalBody>
