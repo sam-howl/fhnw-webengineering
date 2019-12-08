@@ -73,3 +73,10 @@ body {
 }
 
 .close {display: none;}
+
+.about {
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 25%;
+    margin-right: 25%;
+}
