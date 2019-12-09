@@ -25,6 +25,7 @@ Other comments:
  * Header image from: [Pexels](https://www.pexels.com/de-de/royalty-free-images/ "Pexels")
  * HTML Validator: [Validator](https://validator.nu/ "Validator")
  * Dialogs are mostly taken over from the course webfr
+ * Tested with Firefox, Google Chrome and Microsoft Edge
 
 I'm particular proud of:
  * the update dialog, that makes it possible to edit not only the information of the recipe, but also the ingredients. This makes it possible to edit ingredients, add new ingredients and delete them.
