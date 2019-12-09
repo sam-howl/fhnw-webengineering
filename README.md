@@ -10,19 +10,24 @@ You might start.
 
 ## Project delivery <to be filled by student>
 
-How to start the project: (if other than `grailsw run-app`)
+How to start the project: `gradlew bootRun -parallel`
 
-How to test the project:  (if other than `grailsw test-app`)
+How to test the project: 
+ * go to server directory `cd server` 
+ * run tests `grailsw test-app`
 
 Hand-written, static HTML 
-project description:      (if other than `index.html` in project root directory)
+project description: `index.html` in project root directory
 
 External contributions:
-
+ 
 Other comments: 
+ * Header image from: [Pexels](https://www.pexels.com/de-de/royalty-free-images/ "Pexels")
+ * HTML Validator: [Validator](https://validator.nu/ "Validator")
+ * Dialogs are mostly taken over from the course webfr
 
 I'm particular proud of:
-
+ * the update dialog, that makes it possible to edit not only the information of the recipe, but also the ingredients.
 
 ## Project grading 
 
