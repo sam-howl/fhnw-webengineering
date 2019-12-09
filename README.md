@@ -27,7 +27,8 @@ Other comments:
  * Dialogs are mostly taken over from the course webfr
 
 I'm particular proud of:
- * the update dialog, that makes it possible to edit not only the information of the recipe, but also the ingredients.
+ * the update dialog, that makes it possible to edit not only the information of the recipe, but also the ingredients. This makes it possible to edit ingredients, add new ingredients and delete them.
+ * working with a one-to-many relation for the grails domain classes.
 
 ## Project grading 
 

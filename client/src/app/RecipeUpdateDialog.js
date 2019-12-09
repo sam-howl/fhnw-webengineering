@@ -6,7 +6,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
     let [showModal, setShowModal] = useState(false);
     let [recipe, setRecipe] = useState(oldRecipe);
     let [ingredient, setIngredient] = useState({});
-    let [ingredients, setIngredients] = useState(oldRecipe.ingredients);
+    let [ingredients, setIngredients] = useState(JSON.parse(JSON.stringify(oldRecipe.ingredients)));
     let [validIngredient, setValidIngredient] = useState(true);
     let [validRecipe, setValidRecipe] = useState(true);
 
@@ -38,7 +38,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
     const updateIngredients = (event, index) => {
         let ingredientList = ingredients;
         ingredientList[index][event.target.name] = event.target.value;
-        setIngredients(ingredientList)
+        setIngredients([...ingredientList])
     };
 
     //test to check if field contains only spaces
@@ -93,7 +93,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
         <div>
             <Button color="secondary" onClick={ open }
                     className="actionButton">Update</Button>
-            <Modal isOpen={ showModal } toggle={ undoChanges } size="lg" autoFocus={false} keyboard={ undoChanges }>
+            <Modal isOpen={ showModal } toggle={ undoChanges } size="lg" autoFocus={false} backdrop="static" keyboard={false}>
                 <ModalHeader toggle={ undoChanges } >
                     Update a recipe
                 </ModalHeader>
@@ -118,7 +118,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
                                             <Col>
                                                 <Input  type="text"
                                                         name='amount'
-                                                        pattern="^[0-9]+([.,][0-9]+)?$"
+                                                        id={'amount'+index}
                                                         required
                                                         value={ingredient.amount || ''}
                                                         onChange={(event) => updateIngredients(event, index)}
@@ -128,6 +128,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
                                             <Col>
                                                 <Input  type="text"
                                                         name='unit'
+                                                        id={'unit'+index}
                                                         onChange={(event) => updateIngredients(event, index)}
                                                         maxLength="255"
                                                         value={ingredient.unit || ''}
@@ -137,6 +138,7 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
                                             <Col>
                                                 <Input  type="text"
                                                         name='name'
+                                                        id={'name'+index}
                                                         onChange={(event) => updateIngredients(event, index)}
                                                         required
                                                         maxLength="255"
