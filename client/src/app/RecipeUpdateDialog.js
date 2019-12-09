@@ -93,8 +93,8 @@ const RecipeUpdateDialog = ({oldRecipe, updateRecipe}) => {
         <div>
             <Button color="secondary" onClick={ open }
                     className="actionButton">Update</Button>
-            <Modal isOpen={ showModal } toggle={ close } size="lg" autoFocus={false} backdrop="static" keyboard={false}>
-                <ModalHeader toggle={ close } >
+            <Modal isOpen={ showModal } toggle={ undoChanges } size="lg" autoFocus={false} keyboard={ undoChanges }>
+                <ModalHeader toggle={ undoChanges } >
                     Update a recipe
                 </ModalHeader>
                 <ModalBody>

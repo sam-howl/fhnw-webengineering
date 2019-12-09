@@ -23,6 +23,7 @@ class RecipeController {
         def pictureUrl = jsonObject.pictureUrl
         def ingredientsJson = jsonObject.ingredients
 
+        //Create recipe
         Recipe recipe = new Recipe(name: name,
                 description: description,
                 category: category,
@@ -30,6 +31,7 @@ class RecipeController {
                 pictureUrl: pictureUrl
         ).save(flush: true)
 
+        //Add ingredients to the recipe
         for (def ingredient in ingredientsJson){
             def tempIngredient = new Ingredient(name: ingredient.name, unit: ingredient.unit, amount: ingredient.amount).save(flush: true)
             recipe.addToIngredients(tempIngredient).save(flush: true)

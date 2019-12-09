@@ -6,6 +6,7 @@ import RecipeUpdateDialog from "./RecipeUpdateDialog";
 
 const RecipeTable = ({recipes, deleteRecipe, updateRecipe}) => {
 
+        //Get ingredients separated with a comma
         const getIngredientsNames = (ingredients) => {
             var ingredientList = [];
             ingredients.map((ingredient) => {
