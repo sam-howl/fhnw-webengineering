@@ -13,6 +13,8 @@ const RecipeCreateDialog = ({createRecipe}) => {
     const close = () => {
         setShowModal(false);
         setIngredients([]);
+        setIngredient({});
+        setRecipe({});
         setValidIngredient(true);
         setValidRecipe(true);
     };
