@@ -10,7 +10,7 @@ You might start.
 
 ## Project delivery <to be filled by student>
 
-How to start the project: `gradlew bootRun -parallel`
+How to start the project: `gradlew bootRun -parallel` (the page `http://localhost:3000/` is opening automatically when the percentage hit 72%)
 
 How to test the project: 
  * go to server directory `cd server` 
