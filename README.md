@@ -33,6 +33,9 @@ I'm particular proud of:
 
 ## Project grading 
 
+You delivered a very nice and clean project. You achieved the highest grade and this is
+well deserved. Congratulations!
+
 Kindly refer to [GradedExercise.xlsx](GradedExercise.xlsx) for grading details.
 
 Grade: **6.0**
