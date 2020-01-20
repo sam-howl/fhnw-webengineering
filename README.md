@@ -33,4 +33,6 @@ I'm particular proud of:
 
 ## Project grading 
 
-< to be filled by lecturer>
+Kindly refer to [GradedExercise.xlsx](GradedExercise.xlsx) for grading details.
+
+Grade: **6.0**
